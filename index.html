@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Juan Manuel Raggi | Portfolio</title>
+
+  <meta
+    name="description"
+    content="Portfolio personal de Juan Manuel Raggi. Proyectos web, automatización y desarrollo de herramientas."
+  />
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-light: #1f2937;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --border: rgba(255, 255, 255, 0.08);
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 35%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 17, 32, 0.8);
+      backdrop-filter: blur(14px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      place-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      margin-bottom: 16px;
+      color: #60a5fa;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 900px;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .hero-text {
+      max-width: 680px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      border-color: var(--primary);
+      background: var(--primary);
+    }
+
+    .button-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .button-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-heading p {
+      max-width: 660px;
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(17, 24, 39, 0.72);
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.45);
+    }
+
+    .project-number {
+      color: #60a5fa;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .project-card h3 {
+      margin-top: 28px;
+      font-size: 1.35rem;
+    }
+
+    .project-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .project-link {
+      margin-top: auto;
+      padding-top: 24px;
+      color: #93c5fd;
+      font-weight: 700;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-copy {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .skill {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.9rem;
+    }
+
+    .contact-box {
+      padding: 40px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.16),
+          rgba(17, 24, 39, 0.85)
+        );
+    }
+
+    .contact-box h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.05em;
+    }
+
+    .contact-box p {
+      max-width: 600px;
+      margin-top: 14px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .contact-box {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#inicio">JMR.</a>
+
+        <div class="nav-links">
+          <a href="#proyectos">Proyectos</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">Desarrollo web · Automatización · Herramientas</p>
+
+          <h1>Juan Manuel Raggi</h1>
+
+          <p class="hero-text">
+            Desarrollo soluciones simples para problemas reales. Me interesa
+            crear herramientas web útiles, automatizar procesos y transformar
+            ideas en proyectos funcionales.
+          </p>
+
+          <div class="actions">
+            <a class="button button-primary" href="#proyectos">
+              Ver proyectos
+            </a>
+
+            <a
+              class="button button-secondary"
+              href="https://github.com/Jmraggi"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Proyectos</h2>
+          <p>
+            Una selección de proyectos personales, experimentos y herramientas
+            que fui desarrollando.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <span class="project-number">01</span>
+
+            <h3>Contador de días</h3>
+
+            <p>
+              Aplicación web para calcular días hábiles, corridos y distintos
+              tipos de plazos de forma rápida.
+            </p>
+
+            <a class="project-link" href="#" aria-label="Ver Contador de días">
+              Próximamente →
+            </a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-number">02</span>
+
+            <h3>Proyecto personal</h3>
+
+            <p>
+              Espacio reservado para una próxima herramienta o aplicación
+              personal publicable.
+            </p>
+
+            <a class="project-link" href="#" aria-label="Ver proyecto personal">
+              Próximamente →
+            </a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-number">03</span>
+
+            <h3>Experimentos</h3>
+
+            <p>
+              Pruebas de concepto, automatizaciones y pequeños desarrollos
+              creados para aprender y resolver tareas cotidianas.
+            </p>
+
+            <a class="project-link" href="#" aria-label="Ver experimentos">
+              Próximamente →
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-mi">
+      <div class="container">
+        <div class="about">
+          <div class="section-heading">
+            <h2>Sobre mí</h2>
+          </div>
+
+          <div class="about-copy">
+            <p>
+              Soy Juan Manuel, desarrollador y entusiasta de la tecnología.
+              Disfruto crear soluciones prácticas, mejorar procesos y construir
+              proyectos que puedan utilizarse en el mundo real.
+            </p>
+
+            <p style="margin-top: 18px;">
+              Este sitio reúne mis proyectos personales y funciona como espacio
+              para documentar lo que voy construyendo.
+            </p>
+
+            <div class="skills">
+              <span class="skill">HTML</span>
+              <span class="skill">CSS</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">PHP</span>
+              <span class="skill">React</span>
+              <span class="skill">Docker</span>
+              <span class="skill">MySQL</span>
+              <span class="skill">Automatización</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Construyamos algo útil.</h2>
+
+          <p>
+            Podés encontrar mis proyectos y avances en GitHub.
+          </p>
+
+          <div class="actions">
+            <a
+              class="button button-primary"
+              href="https://github.com/Jmraggi"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visitar GitHub
+            </a>
+
+            <a
+              class="button button-secondary"
+              href="mailto:juanmanuelraggi@gmail.com"
+            >
+              Contactarme
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        © <span id="year"></span> Juan Manuel Raggi · jmragg.com.ar
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
